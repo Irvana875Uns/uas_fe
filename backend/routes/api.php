@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +16,12 @@ use App\Http\Controllers\SiswaController;
 |
 */
 
-Route::get('/siswa',[SiswaController::class, 'index'])->middleware('jwt.verify');
+Route::get('/siswa', [SiswaController::class, 'index'])->middleware('jwt.verify');
 Route::get('/siswa/{id}', [SiswaController::class, 'show'])->middleware('jwt.admin');
-Route::get('/siswa',[SiswaController::class, 'store'])->middleware('jwt.admin');
-Route::get('/siswa{id}', [SiswaController::class, 'update'])->middleware('jwt.admin');
-Route::get('/siswa/{id}', [SiswaController::class, 'destory'])->middleware('jwt.admin');
-
-Route::get('/login', [AuthController::class, 'login'])->middleware('guest');
-Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('jwt.verify');
+Route::post('/siswa', [SiswaController::class, 'store'])->middleware('jwt.admin');
+Route::put('/siswa/{id}', [SiswaController::class, 'update'])->middleware('jwt.admin');
+Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->middleware('jwt.admin');
+ 
+Route::post('/login', [AuthController::class, 'login'])->middleware('guest');
+Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('jwt.verify');

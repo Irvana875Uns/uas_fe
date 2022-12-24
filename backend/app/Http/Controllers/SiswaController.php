@@ -12,7 +12,7 @@ class SiswaController extends Controller
     public function index()
     {
         //get data from table siswas
-        $posts = Siswa::orderBy('nama', 'asc')->paginate();
+        $posts = Siswa::orderBy('nama', 'asc')->get();
 
         //make response JSON
         return response()->json([

@@ -9,8 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-
-class User extends Authenticatable implements JWTSubject ///<--implements JWTSubject
+class User extends Authenticatable implements JWTSubject//<-- implement JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -57,6 +56,6 @@ class User extends Authenticatable implements JWTSubject ///<--implements JWTSub
      */
     public function getJWTCustomClaims()
     {
-        return[];
+        return [];
     }
 }
